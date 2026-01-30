@@ -15,7 +15,6 @@ jobs:
       - name: Run Semgrep CI
         uses: returntocorp/semgrep-action@v1
         with:
-          publish-token: ${{ secrets.SEMGREP_APP_TOKEN }}  # <-- this uploads results to dashboard
-          # config: auto   # REMOVE this line when using publish-token
+          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}  # <-- correct camelCase
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
