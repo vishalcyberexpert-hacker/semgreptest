@@ -2,18 +2,20 @@ name: Semgrep SAST
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
 
 jobs:
   semgrep:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Run Semgrep CI
-        uses: semgrep/semgrep-action@v1
+        uses: returntocorp/semgrep-action@v1
+        with:
+          publish-token: ${{ secrets.SEMGREP_APP_TOKEN }}  # <-- this uploads results to dashboard
+          # config: auto   # REMOVE this line when using publish-token
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
