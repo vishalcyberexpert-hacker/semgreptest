@@ -1,7 +1,8 @@
-name: Semgrep CI (Local Output Only)
+name: Semgrep CI
 
 on:
   push:
+    branches: [ "main" ]
   pull_request:
 
 jobs:
@@ -9,10 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Semgrep (local, no dashboard)
+      - name: Run Semgrep (Cloud CI)
         uses: returntocorp/semgrep-action@v1
         with:
+          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
           config: auto
