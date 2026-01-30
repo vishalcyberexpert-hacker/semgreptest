@@ -2,7 +2,8 @@ name: Semgrep CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -12,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: returntocorp/semgrep-action@v1
+      - name: Run Semgrep Cloud Scan
+        uses: returntocorp/semgrep-action@v1
         with:
           publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
