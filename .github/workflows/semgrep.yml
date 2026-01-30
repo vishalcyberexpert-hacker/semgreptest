@@ -8,6 +8,7 @@ on:
 jobs:
   semgrep:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -15,4 +16,4 @@ jobs:
       - name: Run Semgrep CI
         uses: returntocorp/semgrep-action@v1
         with:
-          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}   # correct camelCase
+          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
